@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom cinematic touches */
+body {
+@apply bg-gradient-to-br from-midnight via-royal to-black text-white font-cinematic;
+background-image: radial-gradient(circle at 10% 10%, rgba(255,255,255,0.02), transparent 20%);
+}
+
+.hero-overlay {
+background: linear-gradient(180deg, rgba(10,10,26,0.35), rgba(10,10,26,0.6));
+backdrop-filter: blur(6px);
+}
+
+.glow-btn {
+box-shadow: 0 8px 30px rgba(93,63,211,0.16), 0 0 30px rgba(56,248,225,0.06);
+}

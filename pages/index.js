@@ -1,16 +1,26 @@
+import Head from "next/head";
+import Hero from "../components/Hero";
+import HowItWorks from "../components/HowItWorks";
+import Showcase from "../components/Showcase";
+import Footer from "../components/Footer";
+
 export default function Home() {
-  return (
-    <div style={{
-      fontFamily: 'sans-serif',
-      textAlign: 'center',
-      paddingTop: '20vh',
-      background: 'linear-gradient(135deg, #2E3192, #1BFFFF)',
-      minHeight: '100vh',
-      color: 'white'
-    }}>
-      <h1>🎬 Welcome to <span style={{color:'#FFD700'}}>MagicReel</span></h1>
-      <p>Your memories, reimagined through AI ✨</p>
-      <p style={{marginTop: '40px'}}>Proof of Concept Build – Phase 1</p>
-    </div>
-  );
+return (
+<>
+<Head>
+<title>MagicReel — Turn photos into cinematic reels</title>
+<meta name="description" content="Turn your memories into cinematic reels using AI — 10s free preview." />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</Head>
+
+<div className="min-h-screen flex flex-col">
+<Hero />
+<main className="flex-auto bg-gradient-to-b from-transparent to-black/80">
+<HowItWorks />
+<Showcase />
+</main>
+<Footer />
+</div>
+</>
+);
 }

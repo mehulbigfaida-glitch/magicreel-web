@@ -1,23 +1,41 @@
-export default function HowItWorks() {
-const steps = [
-{ title: "Upload a photo", desc: "Choose a single photo or short clip to begin." },
-{ title: "AI crafts your reel", desc: "Music, motion, and mood — instantly generated." },
-{ title: "Share or upgrade", desc: "Share the watermarked free reel or upgrade for HD & voice." }
-];
+import React from "react";
 
+const HowItWorks = () => {
 return (
-<section id="how" className="py-20 px-6 bg-gradient-to-b from-black/40 to-transparent">
-<div className="max-w-5xl mx-auto text-center">
-<h2 className="text-3xl font-semibold mb-6">How MagicReel Works</h2>
-<div className="grid md:grid-cols-3 gap-6">
-{steps.map((s, i) => (
-<div key={i} className="p-6 rounded-xl bg-white/5 border border-white/5">
-<div className="text-xl font-semibold mb-2">Step {i + 1}: {s.title}</div>
-<p className="text-gray-300">{s.desc}</p>
+<section
+id="how-it-works"
+className="how-it-works py-20 bg-gray-100 text-center"
+>
+<div className="container mx-auto px-6">
+<h2 className="text-3xl font-bold mb-8 text-gray-800">
+How MagicReel Works
+</h2>
+
+<div className="grid md:grid-cols-3 gap-8">
+<div className="bg-white p-6 rounded-lg shadow-md">
+<h3 className="text-xl font-semibold mb-3">Step 1: Upload</h3>
+<p className="text-gray-600">
+Upload your favorite photos that capture your special memories.
+</p>
 </div>
-))}
+
+<div className="bg-white p-6 rounded-lg shadow-md">
+<h3 className="text-xl font-semibold mb-3">Step 2: AI Magic</h3>
+<p className="text-gray-600">
+Our AI transforms your photos into cinematic, story-like reels.
+</p>
+</div>
+
+<div className="bg-white p-6 rounded-lg shadow-md">
+<h3 className="text-xl font-semibold mb-3">Step 3: Share</h3>
+<p className="text-gray-600">
+Download and share your personalized short film in seconds.
+</p>
+</div>
 </div>
 </div>
 </section>
 );
-}
+};
+
+export default HowItWorks;

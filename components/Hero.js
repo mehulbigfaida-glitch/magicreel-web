@@ -1,54 +1,57 @@
-import Link from "next/link";
+import React, { useState } from "react";
+import UploadModal from "./UploadModal";
 
 export default function Hero() {
+const [isModalOpen, setIsModalOpen] = useState(false);
+
 return (
-<header className="relative h-screen flex items-center justify-center overflow-hidden">
-{/* Hero Video */}
+<section className="relative h-screen flex flex-col justify-center items-center text-center text-white overflow-hidden">
 <video
-className="absolute inset-0 w-full h-full object-cover opacity-60"
-src="/videos/hero_loop.mp4"
 autoPlay
-muted
 loop
+muted
 playsInline
+className="absolute inset-0 w-full h-full object-cover"
+src="/videos/hero-bg.mp4"
+></video>
+
+<div className="absolute inset-0 bg-black/50"></div>
+
+<div className="z-10 px-6">
+<img
+src="/logo.png"
+alt="MagicReel Logo"
+className="mx-auto mb-4 w-16 h-16"
 />
-{/* Overlay */}
-<div className="absolute inset-0 hero-overlay"></div>
-
-{/* Content */}
-<div className="relative z-20 text-center px-6 max-w-3xl">
-<div className="mb-6">
-<img src="/logo.svg" alt="MagicReel" className="mx-auto w-40 h-auto" />
-</div>
-
-<h1 className="text-4xl sm:text-5xl font-semibold leading-tight mb-4">
+<h1 className="text-4xl md:text-6xl font-bold mb-4">
 Turn your moments into cinematic reels.
 </h1>
-
-<p className="text-lg text-gray-200 max-w-2xl mx-auto mb-8">
-MagicReel uses AI to weave your photos into short cinematic memories — effortless, beautiful, and shareable.
+<p className="text-lg md:text-xl mb-8 text-gray-200 max-w-2xl mx-auto">
+MagicReel uses AI to weave your photos into short cinematic memories —
+effortless, beautiful, and shareable.
 </p>
 
-<div className="flex items-center justify-center gap-4">
-<a
-href="#upload"
-className="glow-btn inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-royal to-cyanGlow text-black font-medium"
+<div className="flex flex-col sm:flex-row justify-center gap-4">
+<button
+onClick={() => setIsModalOpen(true)}
+className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-3 px-8 rounded-full transition-all"
 >
-Create My Reel ✨
+Create My Reel
+</button>
+
+<a
+href="#how"
+className="border border-white text-white hover:bg-white/20 py-3 px-8 rounded-full transition-all"
+>
+How It Works
 </a>
-
-<Link href="#how">
-<a className="inline-block px-5 py-3 rounded-lg border border-white/20 text-white/90">How it works</a>
-</Link>
 </div>
 
-<div className="mt-6 text-sm text-gray-300">
-<span className="inline-block bg-black/30 px-3 py-1 rounded-full">10s free reel • 720p</span>
-</div>
+<p className="text-sm mt-6 text-gray-300">🎥 10s free reel – 720p</p>
 </div>
 
-{/* subtle vignette */}
-<div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40"></div>
-</header>
+{/* Modal */}
+<UploadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+</section>
 );
 }

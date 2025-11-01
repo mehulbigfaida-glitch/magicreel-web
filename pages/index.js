@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Hero from "../components/Hero";
-import HowItWorks from "../components/HowItWorks";
+import HowItWorks from "../components/HowItWorks.jsx";
 import Showcase from "../components/Showcase";
 import Footer from "../components/Footer";
 

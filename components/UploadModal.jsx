@@ -1,56 +1,74 @@
-import React from "react";
+// components/UploadModal.jsx
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function UploadModal({ isOpen, onClose }) {
-if (!isOpen) return null;
+  const [file, setFile] = useState(null);
 
-return (
-<div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex justify-center items-center z-50">
-<div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 w-11/12 max-w-md text-center border border-white/20 shadow-xl relative">
-<button
-onClick={onClose}
-className="absolute top-3 right-4 text-white text-xl font-bold"
->
-×
-</button>
+  const handleUpload = (e) => {
+    setFile(e.target.files[0]);
+  };
 
-<h2 className="text-2xl font-semibold text-white mb-4">
-✨ Upload Your Memory
-</h2>
-<p className="text-gray-200 mb-6">
-MagicReel will weave your moments into cinematic stories.
-</p>
+  const handleSubmit = () => {
+    if (file) {
+      alert(`Uploading: ${file.name}`);
+      onClose();
+    } else {
+      alert('Please select a file first.');
+    }
+  };
 
-<form className="flex flex-col gap-4">
-<input
-type="text"
-placeholder="Your Name"
-className="p-3 rounded-md bg-white/20 text-white placeholder-gray-300 focus:outline-none"
-/>
-<input
-type="email"
-placeholder="Email Address"
-className="p-3 rounded-md bg-white/20 text-white placeholder-gray-300 focus:outline-none"
-/>
-<input
-type="file"
-multiple
-accept="image/*"
-className="p-3 rounded-md bg-white/20 text-white focus:outline-none"
-/>
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <motion.div
+            className="bg-white p-8 rounded-2xl shadow-2xl w-[90%] max-w-md text-center relative"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+          >
+            <h2 className="text-2xl font-bold mb-6 text-gray-900">Upload Your Memory</h2>
+            <label
+              htmlFor="file-upload"
+              className="cursor-pointer block border-2 border-dashed border-gray-300 p-8 rounded-xl hover:border-indigo-500 transition"
+            >
+              {file ? (
+                <span className="text-gray-700 font-medium">{file.name}</span>
+              ) : (
+                <span className="text-gray-500">Click to upload or drag & drop</span>
+              )}
+              <input
+                id="file-upload"
+                type="file"
+                accept="image/*,video/*"
+                onChange={handleUpload}
+                className="hidden"
+              />
+            </label>
 
-<button
-type="submit"
-className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-3 rounded-md transition-all"
->
-Generate My Reel
-</button>
-</form>
-
-<p className="text-xs text-gray-400 mt-4">
-Your photos stay private and secure.
-</p>
-</div>
-</div>
-);
+            <div className="flex justify-between mt-8">
+              <button
+                onClick={onClose}
+                className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleSubmit}
+                className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
+              >
+                Upload
+              </button>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
 }
-

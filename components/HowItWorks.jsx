@@ -1,4 +1,6 @@
 // components/HowItWorks.jsx
+import React from 'react'; // optional but clears editor redlines
+
 export default function HowItWorks() {
   return (
     <section

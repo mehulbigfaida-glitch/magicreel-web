@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "../styles/global.css";
 
 const Hero = () => {
 const scrollToHowItWorks = () => {

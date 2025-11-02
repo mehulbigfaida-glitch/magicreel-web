@@ -31,7 +31,7 @@ export default function Showcase() {
         muted
         playsInline
       >
-        <source src="/assets/showcase_loop.mp4" type="video/mp4" />
+        <source src="/public/videos/showcase_loop.mp4" type="video/mp4" />
       </video>
 
       {/* 🔹 Overlay gradient for better text contrast */}

@@ -1,64 +1,65 @@
-"use client";
-import { motion } from "framer-motion";
+// components/Hero.js
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import UploadModal from './UploadModal';
 
 export default function Hero() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
-      {/* Background video */}
+    <section className="relative h-screen flex flex-col items-center justify-center text-center text-white overflow-hidden">
       <video
-        className="absolute top-0 left-0 w-full h-full object-cover"
-        src="/videos/hero_loop.mp4"
         autoPlay
         muted
         loop
         playsInline
-      ></video>
+        className="absolute inset-0 w-full h-full object-cover opacity-60"
+      >
+        <source src="/videos/hero_loop.mp4" type="video/mp4" />
+      </video>
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/40"></div>
-
-      {/* Content */}
-      <div className="relative z-10 text-center px-6 text-white">
+      <div className="relative z-10 max-w-3xl px-6">
         <motion.h1
+          className="text-5xl md:text-6xl font-bold mb-6"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl md:text-6xl font-bold mb-4"
         >
-          Turn Your Memories into Magic Reels ✨
+          Turn Your Memories into <span className="text-indigo-400">Magic Reels</span>
         </motion.h1>
 
         <motion.p
+          className="text-lg md:text-xl mb-8 text-gray-200"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="text-lg md:text-xl mb-8"
+          transition={{ delay: 0.3 }}
         >
-          Upload a photo or clip — let AI craft your cinematic moment in seconds.
+          Upload your favorite photo or clip and let our AI create a cinematic masterpiece.
         </motion.p>
 
-        {/* CTA buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          className="flex flex-col md:flex-row gap-4 justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
         >
-          <a
-            href="#upload"
-            className="bg-white text-black px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-100 transition"
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-8 py-3 rounded-lg transition"
           >
             Try MagicReel Now
-          </a>
+          </button>
 
           <a
             href="#how-it-works"
-            className="border border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-black transition"
+            className="bg-white text-indigo-700 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition"
           >
             How It Works
           </a>
         </motion.div>
       </div>
+
+      <UploadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 }

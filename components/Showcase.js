@@ -6,19 +6,19 @@ import Image from "next/image";
 export default function Showcase() {
   const showcases = [
     {
-      image: "/assets/showcase1.jpg",
+      image: "/assets/showcase1.png",
       title: "From Memories to Magic",
       description:
         "Upload your favorite photos or clips — our AI transforms them into cinematic moments you’ll love.",
     },
     {
-      image: "/assets/showcase2.jpg",
+      image: "/assets/showcase2.png",
       title: "Your Story, Your Style",
       description:
         "Choose from multiple cinematic styles and let MagicReel enhance your visuals automatically.",
     },
     {
-      image: "/assets/showcase3.jpg",
+      image: "/assets/showcase3.png",
       title: "Share Instantly",
       description:
         "Download and share your creation directly to Instagram, YouTube Shorts, or WhatsApp.",

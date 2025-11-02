@@ -1,4 +1,4 @@
-import '../styles/global.css'   // ✅ Correct relative import path
+import '../styles/global.css'
 
 export default function App({ Component, pageProps }) {
   return <Component {...pageProps} />

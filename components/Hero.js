@@ -27,6 +27,7 @@ export default function Hero() {
         >
           Turn Your Memories into Magic Reels ✨
         </motion.h1>
+
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -35,13 +36,28 @@ export default function Hero() {
         >
           Upload a photo or clip — let AI craft your cinematic moment in seconds.
         </motion.p>
-        <motion.a
-          href="#upload"
-          whileHover={{ scale: 1.05 }}
-          className="bg-white text-black px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-100 transition"
+
+        {/* CTA buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center"
         >
-          Try MagicReel Now
-        </motion.a>
+          <a
+            href="#upload"
+            className="bg-white text-black px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-100 transition"
+          >
+            Try MagicReel Now
+          </a>
+
+          <a
+            href="#how-it-works"
+            className="border border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-black transition"
+          >
+            How It Works
+          </a>
+        </motion.div>
       </div>
     </section>
   );
